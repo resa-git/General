@@ -1,0 +1,44 @@
+services:
+    wordpress:
+        image: wordpress
+        links:
+        - mariadb:mysql
+        environment:
+        - WORDPRESS_DB_PASSWORD=Reza123
+        - WORDPRESS_DB_USER=root
+        ports:
+        - 8000:80
+        volumes:
+        - ./html/wp-content:/var/www/html/wp-content
+        #- type: bind
+        #  source: ./html
+        #  target: /var/www/html
+        #  consistency: cached
+    mariadb:
+        image: mariadb
+        environment:
+         - MYSQL_ROOT_PASSWORD=Reza123
+         - MYSQL_DATABASE=wordpress
+        volumes:
+        - ./database:/var/lib/mysql:delegated
+        #- type: bind
+        #  source: ./database
+        #  target: /var/lib/mysql
+        #  consistency: cached
+#docker-compose down --volumes
+#myfirstsite username and pass
+#docker-compose up -d
+#http://localhost:8000
+#make sure the file is located in wsl2
+#############################################
+#Delete all the files in post, plugins, pages
+#Install starter templates pluging, click activate
+#starter Templates apears in Appearance section, click on that
+#Select "build your website now" and select Elementor 
+#Choose a template (I chose love nature)
+#Click on skip and continue (dont need a logo now)
+#Let the color to be default and continue
+#Click on submit and build my website
+#Edit the website!	
+#install Simply Static plugings
+#Activate it
